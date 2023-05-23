@@ -37,9 +37,9 @@ function App() {
   }
 
   const addTodo = () =>{
-    axios.post("https://jsonplaceholder.typicode.com/todos", { title: todo }).then((response)=>{setTodo(response)})
-    // setTodos([...todos, { title: todo }])
-    // setTodo("")
+    // axios.post("https://jsonplaceholder.typicode.com/todos", { title: todo }).then((response)=>{console.log(response)})
+    setTodos([...todos, { title: todo }])
+    setTodo("")
   }
 
   const deleteTodo = (id: number) => {
@@ -64,9 +64,9 @@ function App() {
 
   
   return (
-    <div className="bg-slate-700 min-h-screen flex justify-center">
-      <div className="w-1/2  my-20 bg-white rounded-lg shadow-lg p-6">
-        <div className="relative z-[10] flex w-full flex-col items-center p-6">
+    <div className="bg-slate-700 min-h-screen flex justify-center overflow-x-hidden">
+      <div className="w-full sm:w-2/3 lg:w-1/2  my-20 bg-white rounded-lg shadow-lg p-6 overflow-x-hidden ">
+        <div className="relative z-[10] flex w-full flex-col items-center p-6 overflow-x-hidden">
           <h5 className="text-4xl">My Todo list</h5>
           <p>{currentDate}</p>
           <div className="mt-4">
@@ -87,7 +87,7 @@ function App() {
             </div>
           </div>
 
-          <ul className="list list-none mt-6  w-1/2 justify-center  sm:w-4/5 md:w-3/5 bg-slate-100 ">
+          <ul className="list list-none mt-6  max-w-2/3 justify-center  sm:w-4/5 md:w-3/5 bg-slate-100 whitespace-normal overflow-x-hidden break-words ">
             {todos.map((todo, index) => {
               return (
                 <div
@@ -97,7 +97,9 @@ function App() {
                   {" "}
                   <div className="flex">
                     <input type="checkbox" className="ml-2 mr-1" />
-                    <li className='self-center font-semibold pr-10 mr-6 grow'>{todo.title}</li>
+                    <li className="self-center font-semibold pr-10 mr-6 grow">
+                      {todo.title}
+                    </li>
                   </div>
                   <div className="flex">
                     <button
